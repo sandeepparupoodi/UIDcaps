@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AnimeSA Encyclopedia</title>
+
+    <link rel="icon" href="favicon.svg">
+    <link rel="stylesheet" href="global.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="auth.js"></script>
+</head>
+
+<body>
+<script>
+const user = localStorage.getItem("asa_current_user");
+
+if (!user) {
+    window.location.href = "login.html";
+}
+</script>
+
+<!-- 🎬 Background Video -->
+<video autoplay muted loop id="bg-video">
+    <source src="video1.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- 🔥 NAVBAR -->
+<table width="100%" cellpadding="10" class="navbar" id="navbar">
+<tr>
+<td><b>AnimeSA</b></td>
+
+<td align="right" id="nav-links">
+<a href="index.html">Home</a>
+<a href="top.html">Top Anime</a>
+<a href="genres.html">Genres</a>
+<a href="about.html">About</a>
+
+<!-- 👇 Dynamic user -->
+<span id="user-section"></span>
+</td>
+</tr>
+</table>
+
+<!-- CONTENT -->
+<div class="content">
+
+<img src="favicon.svg" class="logo">
+
+<header>
+<h1 style="color:rgb(255, 255, 255);">AnimeSA Encyclopedia</h1>
+</header>
+
+</div>
+
+
+
+
+<div class="card-container" data-genre="action">
+
+  <a href="aot.html" class="card-link">
+    <div class="card">
+      <img src="aot.jpg" alt="Attack on Titan">
+      <h2>Attack on Titan</h2>
+    </div>
+  </a>
+
+    <a href="jjk.html" class="card-link">
+    <div class="card">
+      <img src="jjk.jpg" alt="Jujutsu Kaisen">
+      <h2>Jujutsu Kaisen</h2>
+    </div>
+  </a>
+
+  <a href="ds.html" class="card-link">
+    <div class="card">
+      <img src="ds.jpg" alt="Demon Slayer">
+      <h2>Demon Slayer</h2>
+    </div>
+  </a>
+
+    <a href="naruto.html" class="card-link">
+    <div class="card">
+      <img src="naruto.jpg" alt="Naruto">
+      <h2>Naruto</h2>
+    </div>
+  </a>
+
+    <a href="bleach.html" class="card-link">
+    <div class="card">
+      <img src="bleach.jpg" alt="Bleach">
+      <h2>Bleach</h2>
+    </div>
+
+    <a href="cm.html" class="card-link">
+    <div class="card">
+      <img src="cm.jpg" alt="Chainsaw Man">
+      <h2>Chainsaw Man</h2>
+    </div>
+
+        <a href="sl.html" class="card-link">
+    <div class="card">
+      <img src="sl.jpg" alt="Solo Leveling">
+      <h2>Solo Leveling</h2>
+    </div>
+
+        <a href="bc.html" class="card-link">
+    <div class="card">
+      <img src="bc.jpg" alt="Black Clover">
+      <h2>Black Clover</h2>
+    </div>
+
+        <a href="hp.html" class="card-link">
+    <div class="card">
+      <img src="hp.jpg" alt="Hell's Paradise">
+      <h2>Hell's Paradise </h2>
+    </div>
+
+        <a href="h.html" class="card-link">
+    <div class="card">
+      <img src="h.jpg" alt="Horimiya">
+      <h2>Horimiya</h2>
+    </div>
+
+        <a href="t.html" class="card-link">
+    <div class="card">
+      <img src="t.jpg" alt="Toradora!">
+      <h2>Toradora</h2>
+    </div>
+
+        <a href="yla.html" class="card-link">
+    <div class="card">
+      <img src="yla.jpg" alt="Your Lie in April">
+      <h2>Your Lie in April</h2>
+    </div>
+
+            <a href="clannad.html" class="card-link">
+    <div class="card">
+      <img src="clannad.jpg" alt="Clannad">
+      <h2>Clannad</h2>
+    </div>
+
+         <a href="yourname.html" class="card-link">
+    <div class="card">
+      <img src="yourname.jpg" alt="Your Name">
+      <h2>Your Name</h2>
+    </div>
+
+            <a href="opm.html" class="card-link">
+    <div class="card">
+      <img src="opm.jpg" alt="One Punch Man">
+      <h2>One Punch Man</h2>
+    </div>
+
+            <a href="rezero.html" class="card-link">
+    <div class="card">
+      <img src="rezero.jpg" alt="Re:Zero">
+      <h2>Re:Zero</h2>
+    </div>
+
+            <a href="mp.html" class="card-link">
+    <div class="card">
+      <img src="mp.jpg" alt="Mob Psycho 100">
+      <h2>Mob Psycho 100  </h2>
+    </div>
+
+            <a href="sf.html" class="card-link">
+    <div class="card">
+      <img src="sf.jpg" alt="Spy × Family">
+      <h2>Spy × Family </h2>
+    </div>
+
+            <a href="op.html" class="card-link">
+    <div class="card">
+      <img src="op.jpg" alt="One Piece">
+      <h2>One Piece</h2>
+    </div>
+
+            <a href="dbz.html" class="card-link">
+    <div class="card">
+      <img src="dbz.jpg" alt="Dragon Ball Z">
+      <h2>Dragon Ball Z</h2>
+    </div>
+
+</div>
+
+</body>
+</html>
