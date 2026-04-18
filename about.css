@@ -1,0 +1,81 @@
+/* ═══════════════════════════════════════
+   ABOUT PAGE — about.css
+═══════════════════════════════════════ */
+
+/* ── ABOUT CONTAINER ── */
+.about-container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 32px 48px;
+  text-align: center;
+}
+
+.about-container h1 {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--red);
+  margin-bottom: 28px;
+  text-shadow: 0 0 20px var(--red-glow);
+  letter-spacing: 0.5px;
+}
+
+.about-container p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.7);
+  margin: 0 auto 18px;
+  max-width: 680px;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.about-container p:hover {
+  border-color: rgba(255, 60, 60, 0.25);
+  background: rgba(255, 60, 60, 0.04);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(255, 60, 60, 0.1);
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 22px 20px;
+  border-top: 1px solid var(--border);
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — ABOUT
+═══════════════════════════════════════ */
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .about-container { padding: 60px 28px 40px; }
+  .about-container h1 { font-size: 36px; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .about-container { padding: 48px 22px 36px; }
+  .about-container h1 { font-size: 30px; margin-bottom: 22px; }
+  .about-container p { font-size: 15px; padding: 18px 20px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .about-container { padding: 36px 16px 28px; }
+  .about-container h1 { font-size: 24px; margin-bottom: 18px; }
+  .about-container p { font-size: 14px; padding: 16px; line-height: 1.7; }
+  .footer { font-size: 12px; padding: 18px 16px; }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+  .about-container h1 { font-size: 20px; }
+  .about-container p { font-size: 13px; }
+}

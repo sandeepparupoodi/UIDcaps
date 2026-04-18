@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════
+   TOP ANIME PAGE — top.css
+═══════════════════════════════════════ */
+
+/* ── PAGE TITLE ── */
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  padding: 36px 32px 16px;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  padding: 24px 32px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ── CARD ── */
+.card {
+  text-decoration: none;
+  color: var(--text);
+  transition: var(--transition);
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 340px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+/* Image */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+  display: block;
+}
+
+/* Gradient overlay */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 55%);
+  z-index: 1;
+}
+
+/* Rank badge */
+.rank {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--red);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  z-index: 3;
+  box-shadow: 0 0 10px var(--red-glow);
+  letter-spacing: 0.5px;
+}
+
+/* Title */
+.card p {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  text-align: left;
+  line-height: 1.3;
+}
+
+/* Hover */
+.card:hover {
+  transform: scale(1.05) translateY(-6px);
+  box-shadow: 0 12px 35px var(--red-glow);
+  border-color: rgba(255,60,60,0.3);
+}
+
+.card:hover img {
+  transform: scale(1.12);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — TOP
+═══════════════════════════════════════ */
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 20px 24px 36px;
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .title { font-size: 32px; }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 18px;
+    padding: 16px 18px 32px;
+  }
+
+  .card { height: 290px; }
+  .card p { font-size: 15px; }
+  .rank { font-size: 11px; padding: 3px 8px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .title { font-size: 24px; padding: 20px 14px 8px; text-align: center; }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 12px 14px 28px;
+  }
+
+  .card { height: 240px; }
+  .card p { font-size: 13px; bottom: 10px; left: 10px; }
+  .rank { font-size: 10px; padding: 2px 7px; top: 6px; left: 6px; }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .card { height: 210px; }
+}

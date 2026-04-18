@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – AnimeSA</title>
+
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<!-- NAVBAR -->
+<table width="100%" cellpadding="10" class="navbar">
+<tr>
+  <td><b>AnimeSA</b></td>
+</tr>
+</table>
+
+<!-- AUTH CONTAINER -->
+<div class="auth-wrapper">
+  <div class="auth-box">
+
+    <!-- LOGO -->
+    <div class="auth-logo">
+      <img src="favicon.svg" alt="AnimeSA Logo">
+      <h2>AnimeSA</h2>
+    </div>
+
+    <!-- TABS -->
+    <div class="tab-bar">
+      <button class="tab active" id="tab-login" onclick="switchTab('login')">Login</button>
+      <button class="tab" id="tab-signup" onclick="switchTab('signup')">Sign Up</button>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="msg-box" id="msg-box"></div>
+
+    <!-- LOGIN -->
+    <div id="form-login">
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="login-username" placeholder="Enter your username">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="login-password" placeholder="Enter your password">
+      </div>
+
+      <button class="auth-btn" onclick="handleLogin()">Login</button>
+
+      <p class="switch-text">
+        Don't have an account?
+        <a onclick="switchTab('signup')">Sign Up</a>
+      </p>
+    </div>
+
+    <!-- SIGNUP -->
+    <div id="form-signup" class="hidden">
+
+      <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="signup-username" placeholder="Choose a username">
+      </div>
+
+      <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="signup-email" placeholder="Enter your email">
+      </div>
+
+      <div class="input-group">
+        <label>Phone Number</label>
+        <input type="text" id="signup-phone" maxlength="10"
+          placeholder="Enter 10-digit phone"
+          oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="signup-password" placeholder="Create password">
+      </div>
+
+      <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" id="signup-confirm" placeholder="Confirm password">
+      </div>
+
+      <button class="auth-btn" onclick="handleSignup()">Create Account</button>
+
+      <p class="switch-text">
+        Already have an account?
+        <a onclick="switchTab('login')">Login</a>
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+
+  // Redirect if already logged in
+  const loggedIn = localStorage.getItem("asa_current_user");
+  if (loggedIn) window.location.href = "index.html";
+
+  function switchTab(tab) {
+    document.getElementById("form-login").classList.toggle("hidden", tab !== "login");
+    document.getElementById("form-signup").classList.toggle("hidden", tab !== "signup");
+    document.getElementById("tab-login").classList.toggle("active", tab === "login");
+    document.getElementById("tab-signup").classList.toggle("active", tab === "signup");
+    clearMsg();
+  }
+
+  function showMsg(text, type) {
+    const box = document.getElementById("msg-box");
+    box.textContent = text;
+    box.className = "msg-box " + type;
+  }
+
+  function clearMsg() {
+    const box = document.getElementById("msg-box");
+    box.textContent = "";
+    box.className = "msg-box";
+  }
+
+  // LOGIN FUNCTION
+  function handleLogin() {
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    if (!username || !password) {
+      showMsg("⚠️ Please fill in all fields.", "error");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("asa_users") || "{}");
+
+    if (!users[username]) {
+      showMsg("❌ Username not found.", "error");
+      return;
+    }
+
+    if (users[username].password !== btoa(password)) {
+      showMsg("❌ Incorrect password.", "error");
+      return;
+    }
+
+    localStorage.setItem("asa_current_user", username);
+    showMsg("✅ Welcome back, " + username + "!", "success");
+
+    setTimeout(() => window.location.href = "index.html", 1200);
+  }
+
+  // SIGNUP FUNCTION
+  function handleSignup() {
+    const username = document.getElementById("signup-username").value.trim();
+    const email    = document.getElementById("signup-email").value.trim();
+    const phone    = document.getElementById("signup-phone").value.trim();
+    const password = document.getElementById("signup-password").value;
+    const confirm  = document.getElementById("signup-confirm").value;
+
+    if (!username || !email || !phone || !password || !confirm) {
+      showMsg("⚠️ Please fill in all fields.", "error");
+      return;
+    }
+
+    // EMAIL VALIDATION
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+      showMsg("❌ Invalid email (must include @ and domain).", "error");
+      return;
+    }
+
+    // PHONE VALIDATION
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phone.match(phonePattern)) {
+      showMsg("❌ Phone number must be exactly 10 digits.", "error");
+      return;
+    }
+
+    if (password !== confirm) {
+      showMsg("❌ Passwords do not match.", "error");
+      return;
+    }
+
+    if (password.length < 6) {
+      showMsg("❌ Password must be at least 6 characters.", "error");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("asa_users") || "{}");
+
+    if (users[username]) {
+      showMsg("❌ Username already taken.", "error");
+      return;
+    }
+
+    // SAVE USER
+    users[username] = {
+      email,
+      phone,
+      password: btoa(password)
+    };
+
+    localStorage.setItem("asa_users", JSON.stringify(users));
+    localStorage.setItem("asa_current_user", username);
+
+    showMsg("✅ Account created successfully!", "success");
+
+    setTimeout(() => window.location.href = "index.html", 1200);
+  }
+
+</script>
+
+</body>
+</html>

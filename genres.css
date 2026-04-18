@@ -1,0 +1,267 @@
+/* ═══════════════════════════════════════
+   GENRES PAGE — genres.css (FIXED)
+═══════════════════════════════════════ */
+
+
+/* ── CONTENT WRAPPER ── */
+
+.content {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.content h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 0 30px rgba(255,255,255,0.2);
+  letter-spacing: 1px;
+}
+
+
+/* ── GENRE BUTTONS ── */
+
+.genre-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 20px;
+}
+
+.genre-card {
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 26px;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.genre-card:hover {
+  background: var(--red-soft);
+  border-color: var(--red);
+  color: var(--red);
+  box-shadow: 0 0 14px var(--red-glow);
+}
+
+.genre-card.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+  box-shadow: 0 0 18px var(--red-glow);
+}
+
+
+/* ── CARD GRID ── */
+
+.card-container {
+  display: grid;
+
+  /* FIXED GRID (better spacing like your image) */
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+
+  gap: 22px;
+  padding: 24px 32px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+/* ── CARD ── */
+
+.card {
+  position: relative;
+  width: 100%;
+
+  /* FIX: removed aspect-ratio, added fixed height */
+  height: 300px;
+
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.35s ease;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  display: block;
+
+  /* NEW: clean shadow like reference */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+
+/* Image */
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s ease;
+  display: block;
+}
+
+
+/* Gradient Overlay */
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.85) 0%,
+    transparent 60%
+  );
+  z-index: 1;
+}
+
+
+/* Title */
+
+.card h3 {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+}
+
+
+/* Hover */
+
+.card:hover {
+  transform: scale(1.06);
+}
+
+.card:hover img {
+  transform: scale(1.1);
+}
+
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — GENRES
+═══════════════════════════════════════ */
+
+
+/* Tablet landscape */
+
+@media (max-width: 1024px) {
+
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    padding: 20px 24px 36px;
+    gap: 20px;
+  }
+
+  .content h1 {
+    font-size: 32px;
+  }
+
+  .card {
+    height: 260px;
+  }
+}
+
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+  .content h1 {
+    font-size: 28px;
+  }
+
+  .genre-container {
+    gap: 12px;
+  }
+
+  .genre-card {
+    font-size: 13px;
+    padding: 9px 20px;
+  }
+
+  .card-container {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 18px;
+    padding: 16px 18px 32px;
+  }
+
+  .card {
+    height: 240px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+  }
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .content {
+    padding: 40px 16px 12px;
+  }
+
+  .content h1 {
+    font-size: 24px;
+  }
+
+  .genre-container {
+    gap: 10px;
+    padding: 16px 14px;
+  }
+
+  .genre-card {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+
+  /* Perfect 2-column layout */
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 12px 14px 28px;
+  }
+
+  .card {
+    height: 210px;
+  }
+
+  .card h3 {
+    font-size: 13px;
+    bottom: 10px;
+    left: 10px;
+  }
+}
+
+
+/* Very Small Mobile */
+
+@media (max-width: 360px) {
+
+  .card-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .genre-card {
+    font-size: 11px;
+    padding: 7px 14px;
+  }
+
+  .card {
+    height: 190px;
+  }
+}

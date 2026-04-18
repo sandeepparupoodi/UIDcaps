@@ -1,0 +1,269 @@
+/* ═══════════════════════════════════════
+   ANIME DETAIL PAGE — aot.css
+   (Use this as the base for ALL anime pages)
+═══════════════════════════════════════ */
+
+/* ── HERO SECTION ── */
+.hero {
+  position: relative;
+  height: 88vh;
+  overflow: hidden;
+  color: white;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  filter: brightness(0.55);
+  z-index: 0;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0.92) 0%,
+    rgba(0,0,0,0.6) 45%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  transform: translateY(-50%);
+  max-width: 520px;
+  z-index: 2;
+}
+
+.hero-content h1 {
+  font-size: 58px;
+  font-weight: 700;
+  color: var(--red);
+  text-shadow: 0 0 25px var(--red-glow);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+
+.meta {
+  font-size: 15px;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 16px;
+}
+
+.genres {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.5px;
+}
+
+/* ── INFO SECTION ── */
+.info-section {
+  display: flex;
+  gap: 36px;
+  padding: 48px 40px;
+  align-items: flex-start;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.left {
+  flex-shrink: 0;
+}
+
+.poster {
+  width: 240px;
+  border-radius: var(--radius);
+  box-shadow: 0 0 30px rgba(255,0,0,0.25);
+  transition: var(--transition);
+  display: block;
+}
+
+.poster:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 40px var(--red-glow);
+}
+
+/* ── ANIME INFO PANEL ── */
+.anime-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.anime-info h1 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, var(--red), #ff8080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.anime-info section {
+  margin-bottom: 20px;
+  padding: 22px 24px;
+  border-radius: var(--radius);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.anime-info section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(255,0,0,0.15);
+  border-color: rgba(255,60,60,0.2);
+}
+
+.anime-info h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.anime-info p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+}
+
+.anime-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.anime-info li {
+  padding: 10px 14px;
+  margin: 8px 0;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  background: linear-gradient(90deg, rgba(255,0,0,0.06), transparent);
+  border-left: 3px solid var(--red);
+  transition: var(--transition);
+}
+
+.anime-info li:hover {
+  transform: translateX(10px);
+  background: rgba(255,0,0,0.1);
+  color: white;
+}
+
+/* ── CHARACTER PILLS ── */
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.characters span {
+  display: inline-block;
+  padding: 9px 20px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  color: var(--text);
+  transition: var(--transition);
+  cursor: default;
+}
+
+.characters span:hover {
+  background: linear-gradient(135deg, var(--red), #ff6a6a);
+  color: white;
+  border-color: var(--red);
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px var(--red-glow);
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE — ANIME DETAIL
+═══════════════════════════════════════ */
+
+/* Tablet landscape */
+@media (max-width: 1024px) {
+  .hero-content { left: 40px; max-width: 460px; }
+  .hero-content h1 { font-size: 48px; }
+  .info-section { padding: 36px 28px; gap: 28px; }
+  .poster { width: 200px; }
+  .anime-info h1 { font-size: 28px; }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .hero { height: 70vh; }
+  .hero-content { left: 28px; max-width: 380px; }
+  .hero-content h1 { font-size: 38px; }
+  .meta, .desc { font-size: 14px; }
+
+  .info-section {
+    flex-direction: column;
+    padding: 28px 22px;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .left { width: 100%; text-align: center; }
+  .poster { width: 180px; display: inline-block; }
+  .anime-info h1 { font-size: 24px; text-align: center; }
+  .anime-info section { padding: 18px 20px; }
+  .anime-info h2 { font-size: 14px; }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .hero { height: 60vh; }
+
+  .hero-content {
+    left: 18px;
+    right: 18px;
+    max-width: 100%;
+  }
+
+  .hero-content h1 { font-size: 28px; }
+  .meta { font-size: 13px; }
+  .desc { font-size: 13px; line-height: 1.6; }
+  .genres { font-size: 12px; }
+
+  .info-section { padding: 22px 14px; gap: 18px; }
+  .poster { width: 150px; }
+
+  .anime-info h1 { font-size: 20px; margin-bottom: 16px; }
+  .anime-info section { padding: 14px 16px; margin-bottom: 14px; }
+  .anime-info h2 { font-size: 12px; margin-bottom: 10px; }
+  .anime-info li { font-size: 13px; padding: 8px 12px; }
+  .anime-info p { font-size: 13px; }
+
+  .characters { gap: 8px; }
+  .characters span { font-size: 12px; padding: 7px 14px; }
+}
+
+/* Very small mobile */
+@media (max-width: 360px) {
+  .hero-content h1 { font-size: 24px; }
+  .poster { width: 130px; }
+  .anime-info h1 { font-size: 18px; }
+}

@@ -1,0 +1,104 @@
+/* BODY */
+
+body {
+
+margin: 0;
+font-family: Arial, sans-serif;
+
+background: linear-gradient(135deg,
+#0f2027,
+#203a43,
+#2c5364);
+
+height: 100vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+
+/* LOGIN BOX */
+
+.login-container {
+
+background: white;
+
+padding: 30px;
+
+border-radius: 10px;
+
+box-shadow: 0 0 15px rgba(0,0,0,0.3);
+
+width: 300px;
+
+text-align: center;
+
+}
+
+
+/* TITLE */
+
+.login-container h2 {
+
+margin-bottom: 20px;
+
+}
+
+
+/* INPUT */
+
+.login-container input {
+
+width: 100%;
+
+padding: 10px;
+
+margin: 10px 0;
+
+border-radius: 5px;
+
+border: 1px solid #ccc;
+
+}
+
+
+/* BUTTON */
+
+.login-container button {
+
+width: 100%;
+
+padding: 10px;
+
+background: #2c5364;
+
+color: white;
+
+border: none;
+
+border-radius: 5px;
+
+cursor: pointer;
+
+font-size: 16px;
+
+}
+
+
+.login-container button:hover {
+
+background: #203a43;
+
+}
+
+
+/* ERROR MESSAGE */
+
+#errorMsg {
+
+color: red;
+font-size: 14px;
+
+}
